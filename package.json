@@ -23,6 +23,10 @@
     "chai": "^3.5.0",
     "mocha": "^3.2.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xtuc/babel-plugin-transform-scala-lambda.git"
+  },
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
