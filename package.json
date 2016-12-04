@@ -1,14 +1,16 @@
 {
-  "name": "babel-scala",
+  "name": "babel-plugin-transform-scala-lambda",
   "version": "1.0.0",
   "keywords": [
     "scala",
     "babel",
+    "lambda",
+    "transform",
     "plugin",
     "syntax",
     "suggar"
   ],
-  "description": "Inspired from Scala syntaxic suggar.",
+  "description": "Enable Scala lambda style",
   "dependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
