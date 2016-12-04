@@ -1,11 +1,16 @@
-# babel-plugin-transform-scala-lambda
+# Transform Scala lambda
 
 > Enable Scala lambda style
+
+## Motivations
+
+* Allow a more consice syntax for simple things.
+* Scala is a great language (you should take a look at [Scala.js](http://www.scala-js.org/))
 
 ## Installation
 
 ```sh
-npm install --save-dev babel-plugin-scalifier
+npm install --save-dev babel-plugin-transform-scala-lambda
 ```
 
 ## Usage
@@ -14,7 +19,7 @@ Add the following line to your .babelrc file:
 
 ```json
 {
-    "plugins": ["scalifier"]
+    "plugins": ["transform-scala-lambda"]
 }
 ```
 
@@ -22,13 +27,13 @@ Add the following line to your .babelrc file:
 
 ### Sum a list of numbers
 
-#### Using Scalifier
+#### Using lambda style
 
 ```js
 const sum = [1, 1, 1].reduce(_ + _);
 ```
 
-#### Without Scalifier
+#### Without it
 
 ```js
 const sum = [1, 1, 1].reduce((a, b) => {
@@ -38,7 +43,7 @@ const sum = [1, 1, 1].reduce((a, b) => {
 
 ### Get property from object
 
-#### Using Scalifier
+#### Using lambda style
 
 ```js
 const users = [{ name: "Sven" }, { name: "James" }];
@@ -46,7 +51,7 @@ const users = [{ name: "Sven" }, { name: "James" }];
 const userNames = users.map(_.name);
 ```
 
-#### Without Scalifier
+#### Without it
 
 ```js
 const users = [{ name: "Sven" }, { name: "James" }];
