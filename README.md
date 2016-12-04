@@ -14,7 +14,7 @@ Add the following line to your .babelrc file:
 
 ```json
 {
-      "plugins": ["scalifier"]
+  "plugins": ["scalifier"]
 }
 ```
 
@@ -32,7 +32,7 @@ const sum = [1, 1, 1].reduce(_ + _);
 
 ```js
 const sum = [1, 1, 1].reduce((a, b) => {
-        return a + b;
+  return a + b;
 });
 ```
 
@@ -52,6 +52,6 @@ const userNames = users.map(_.name);
 const users = [{ name: "Sven" }, { name: "James" }];
 
 const userNames = users.map(u => {
-        return u.name;
+  return u.name;
 });
 ```
