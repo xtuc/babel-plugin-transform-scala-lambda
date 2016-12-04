@@ -5,7 +5,7 @@
 ## Motivations
 
 * Allow a more consice syntax for simple things.
-* Scala is a great language (you should take a look at [Scala.js](http://www.scala-js.org/))
+* Scala is a great language (you should take a look at [Scala.js](http://www.scala-js.org))
 
 ## Installation
 
