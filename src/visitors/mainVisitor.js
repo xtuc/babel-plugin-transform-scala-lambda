@@ -5,9 +5,9 @@ import {
   generateIdFromScope
 } from '../utils';
 
-import { replaceChildVisitor } from './replaceChildVisitor';
+import {replaceChildVisitor} from './replaceChildVisitor';
 
-const t = require("babel-types");
+const t = require('babel-types');
 
 export const mainVisitor = {
 
@@ -16,7 +16,7 @@ export const mainVisitor = {
 
     if (nodes.length > 0) {
 
-      const ids = nodes.map(x =>
+      const ids = nodes.map(() =>
         path.scope.generateUidIdentifier(T_UNDERSCORE)
       );
 
@@ -28,16 +28,16 @@ export const mainVisitor = {
         t.arrowFunctionExpression(ids, body)
       );
 
-      ids.forEach(id => {
-        path.traverse(replaceChildVisitor, { id });
-      })
+      ids.forEach((id) => {
+        path.traverse(replaceChildVisitor, {id});
+      });
 
       path.stop();
     }
   },
 
   MemberExpression(path) {
-    const { object } = path.node;
+    const {object} = path.node;
 
     if (isUnderscore(object)) {
       const id = generateIdFromScope(path.scope);
@@ -47,7 +47,7 @@ export const mainVisitor = {
       ]);
 
       path.replaceWith(
-        t.arrowFunctionExpression([ id ], body)
+        t.arrowFunctionExpression([id], body)
       );
 
       replaceChildsUnderscoreWithId(path, id);
@@ -56,11 +56,13 @@ export const mainVisitor = {
   },
 
   BinaryExpression(path) {
-    const { left, right } = path.node;
-    const nodes = [ left, right ].filter(isUnderscore);
+    const {left, right} = path.node;
+    const nodes = [left, right].filter(isUnderscore);
 
     if (nodes.length > 0) {
-      const ids = nodes.map(x => generateIdFromScope(path.scope));
+      const ids = nodes.map(() =>
+        generateIdFromScope(path.scope)
+      );
 
       const body = t.blockStatement([
         t.returnStatement(path.node)
@@ -70,7 +72,7 @@ export const mainVisitor = {
         t.arrowFunctionExpression(ids, body)
       );
 
-      ids.forEach(id => replaceChildsUnderscoreWithId(path, id));
+      ids.forEach((id) => replaceChildsUnderscoreWithId(path, id));
     }
   }
 

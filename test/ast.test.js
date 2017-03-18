@@ -1,8 +1,8 @@
 import * as babylon from 'babylon';
 import traverse from 'babel-traverse';
 import generate from 'babel-generator';
-import { mainVisitor } from '../src/visitors/mainVisitor';
-import { assert } from 'chai';
+import {mainVisitor} from '../src/visitors/mainVisitor';
+import {assert} from 'chai';
 
 function transform(code) {
   const ast = babylon.parse(code);
@@ -18,11 +18,11 @@ function assertOutput(code, expected) {
   assert.equal(out, expected);
 }
 
-describe("AST transformations", () => {
+describe('AST transformations', () => {
 
-  describe("Binary expressions", () => {
+  describe('Binary expressions', () => {
 
-    it("should replace left side", () => {
+    it('should replace left side', () => {
       const code = '[1, 2].map(_ * 10)';
 
       const expected = `[1, 2].map(_2 => {
@@ -32,7 +32,7 @@ describe("AST transformations", () => {
       assertOutput(code, expected);
     });
 
-    it("should replace right side", () => {
+    it('should replace right side', () => {
       const code = '[1, 2].map(10 * _)';
 
       const expected = `[1, 2].map(_2 => {
@@ -42,7 +42,7 @@ describe("AST transformations", () => {
       assertOutput(code, expected);
     });
 
-    it("should replace both sides", () => {
+    it('should replace both sides', () => {
       const code = '[1, 2].map(_ * _)';
 
       const expected = `[1, 2].map((_2, _3) => {
@@ -54,9 +54,9 @@ describe("AST transformations", () => {
 
   });
 
-  describe("Member expressions", () => {
+  describe('Member expressions', () => {
 
-    it("should replace _ object", () => {
+    it('should replace _ object', () => {
       const code = '["test"].map(_.length)';
 
       const expected = `["test"].map(_2 => {
@@ -67,9 +67,9 @@ describe("AST transformations", () => {
     });
   });
 
-  describe("Call expressions", () => {
+  describe('Call expressions', () => {
 
-    it("should replace argument in function call", () => {
+    it('should replace argument in function call', () => {
       const code = '["a", "b"].map(console.log(_))';
 
       const expected = `["a", "b"].map(_2 => {
@@ -79,7 +79,7 @@ describe("AST transformations", () => {
       assertOutput(code, expected);
     });
 
-    it("should replace multiple arguments in function call", () => {
+    it('should replace multiple arguments in function call', () => {
       const code = '["a", "b"].map(console.log(_, _))';
 
       const expected = `["a", "b"].map((_2, _3) => {
