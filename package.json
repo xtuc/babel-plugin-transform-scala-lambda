@@ -29,7 +29,7 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register",
+    "test": "mocha --compilers js:babel-core/register test test/**/*",
     "build": "babel src --out-dir lib --copy-files"
   },
   "author": "Sven SAULEAU",
