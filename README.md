@@ -1,5 +1,7 @@
 # Transform Scala lambda
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/xtuc/babel-plugin-transform-scala-lambda.svg)](https://greenkeeper.io/)
+
 > Enable Scala lambda style
 
 ## Motivations
