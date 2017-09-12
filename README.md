@@ -38,9 +38,7 @@ const sum = [1, 1, 1].reduce(_ + _);
 #### Without it
 
 ```js
-const sum = [1, 1, 1].reduce((a, b) => {
-    return a + b;
-});
+const sum = [1, 1, 1].reduce((a, b) => a + b);
 ```
 
 ### Get property from object
@@ -58,7 +56,5 @@ const userNames = users.map(_.name);
 ```js
 const users = [{ name: "Sven" }, { name: "James" }];
 
-const userNames = users.map(u => {
-    return u.name;
-});
+const userNames = users.map(u => u.name);
 ```
